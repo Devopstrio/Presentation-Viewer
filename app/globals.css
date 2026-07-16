@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-background: #050505;
+  --color-secondary-bg: #111111;
+  --color-primary-red: #E11D48;
+  --color-hover-red: #BE123C;
+  --color-white-text: #FFFFFF;
+  --color-gray-text: #9CA3AF;
+  --color-border-color: #262626;
+  --color-accent-glow: rgba(225, 29, 72, 0.3);
+}
+
+:root {
+  --background: #050505;
+  --foreground: #FFFFFF;
+}
+
+body {
+  background-color: #050505;
+  color: #FFFFFF;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom styles for animations & premium elements */
+.red-glow-shadow {
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.red-glow-shadow:hover {
+  box-shadow: 0 0 30px rgba(225, 29, 72, 0.35);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(225, 29, 72, 0.5);
+}
+
+/* Custom scrollbar for premium theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E11D48;
+}
+
+/* Override pptx-react-viewer elements to remove forced dark/black backgrounds and borders from text boxes and images */
+div[data-pptx-element="true"]:has(.whitespace-pre-wrap),
+div[data-pptx-element="true"]:has(img),
+div[data-pptx-element="true"]:has(canvas),
+div[data-pptx-element="true"]:has(svg) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  border-width: 0px !important;
+  box-shadow: none !important;
+}
+
