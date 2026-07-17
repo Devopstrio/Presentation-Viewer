@@ -29,11 +29,14 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Zip artifact for deployment
+        run: zip -qy -r next-app.zip . -x "*.git*" "node_modules/*"
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: next-app.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,5 +54,5 @@ jobs:
         with:
           app-name: 'Devopstriomedia'
           slot-name: 'Production'
-          package: .
+          package: next-app.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_19C4699C7B694494946F613DDB24556A }}
